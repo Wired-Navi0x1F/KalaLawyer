@@ -67,3 +67,12 @@ To build changes made to templates or static source assets:
 python build_static.py
 ```
 This generates the full static site inside `/dist`. You can deploy the `/dist` directory directly to any static web host (Netlify, Vercel, or GitHub Pages).
+
+---
+
+## ⚖️ Copyright & License
+
+Copyright © 2026 The Kala Lawyers. All rights reserved.
+
+No part of this repository may be reproduced, distributed, or transmitted in any form or by any means, including copying, modifying, or redistributing the code, without the prior written permission of the copyright owners.
+
