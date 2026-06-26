@@ -1,0 +1,18 @@
+# Credentials and Environment variables
+.env
+.env*.local
+
+# Python caches and virtualenvs
+__pycache__/
+*.pyc
+venv/
+.venv/
+env/
+
+# IDE settings
+.vscode/
+.idea/
+
+# OS specific files
+.DS_Store
+Thumbs.db

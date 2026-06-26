@@ -1,0 +1,195 @@
+/* >>>>>>>>>>>>>>>>>>>>>>>>>__ABOUT_SECTION__<<<<<<<<<<<<<<<<<<<<<<<< */
+.about-container {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 4rem 3rem;
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: var(--shadow-premium);
+  border: 1px solid var(--border-color);
+}
+
+.about-company h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+}
+
+.about-company h1 span {
+  color: var(--accent-color);
+}
+
+.about-company p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--secondary-color);
+  text-align: justify;
+}
+
+.founder-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 4rem;
+  gap: 4rem;
+}
+
+.founder-photo {
+  flex: 0 0 35%;
+}
+
+.founder-photo img {
+  width: 100%;
+  height: auto;
+  max-height: 460px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-premium);
+  object-fit: cover;
+  border: 1px solid var(--border-color);
+}
+
+.founder-details {
+  flex: 1;
+  text-align: justify;
+  margin-top: 0;
+}
+
+.founder-details h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.founder-details p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--secondary-color);
+  margin-bottom: 2rem;
+}
+
+/* Legacy Section Styling */
+.legacy-section {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.legacy-section p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--secondary-color);
+  text-align: justify;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.legacy-section h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 2.4rem;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Team Members Section */
+.team-members {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.team-member {
+  background-color: var(--bg-card);
+  padding: 3rem 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-premium);
+  border: 1px solid var(--border-color);
+  text-align: center;
+  transition: border-color 0.3s ease, transform 0.1s ease-out, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  transform-style: preserve-3d;
+}
+
+.team-member:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 12px 30px rgba(60, 47, 47, 0.08);
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 1.8rem;
+  border-radius: 50%;
+  box-shadow: var(--shadow-premium);
+  border: 2px solid var(--border-color);
+  object-fit: cover;
+}
+
+.team-member h3 {
+  font-family: 'Merriweather', serif;
+  font-size: 1.6rem;
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.team-member .role {
+  color: var(--accent-color);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.team-member p {
+  font-size: 0.98rem;
+  color: var(--secondary-color);
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .founder-section {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .founder-photo {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  
+  .team-members {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-container {
+    padding: 2rem 1.5rem;
+  }
+  
+  .about-company h1, .legacy-section h2 {
+    font-size: 2rem;
+  }
+  
+  .founder-details h2 {
+    font-size: 1.6rem;
+  }
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found - The Kala Lawyers</title>
+    <meta name="robots" content="noindex, nofollow" />
+    
+    <link rel="icon" href="{{ url_for('static', filename='images/kala_lawyer_logo.png') }}" type="image/png" />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <style>
+      .error-page {
+        text-align: center;
+        padding: 8rem 2rem;
+        background-color: var(--background-color);
+        color: var(--primary-color);
+        min-height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .error-code {
+        font-size: 6rem;
+        font-weight: 700;
+        color: var(--accent-color);
+        margin: 0;
+        line-height: 1;
+        font-family: 'Merriweather', serif;
+      }
+      .error-title {
+        font-size: 2.2rem;
+        font-family: 'Merriweather', serif;
+        margin: 1.5rem 0 1rem 0;
+        color: var(--primary-color);
+      }
+      .error-description {
+        font-size: 1.1rem;
+        color: var(--secondary-color);
+        max-width: 500px;
+        margin: 0 auto 2.5rem auto;
+        line-height: 1.6;
+      }
+      .back-home-btn {
+        display: inline-block;
+        background: var(--accent-color);
+        color: #ffffff;
+        padding: 0.9rem 2.2rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: background-color 0.2s, transform 0.2s;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .back-home-btn:hover {
+        background-color: var(--accent-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(160, 120, 85, 0.25);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-main">
+        <!-- Logo -->
+        <a href="{{ url_for('home') }}" class="logo"><img src="{{ url_for('static', filename='images/kala_lawyer_logo.png') }}" alt="Kala Lawyer Logo" />KALA <span>LAWYER</span></a>
+
+        <!-- Burger menu -->
+        <div class="burger-menu" id="burgerMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="nav-panel" id="navPanel">
+          <a href="{{ url_for('home') }}">Home</a>
+          <a href="{{ url_for('about') }}">About Us</a>
+          <a href="{{ url_for('practice') }}">Practice Area</a>
+          <a href="{{ url_for('case') }}">Case</a>
+          <a href="{{ url_for('contact') }}">Contact</a>
+        </nav>
+        <button class="button type1" onclick="copyPhoneNumber()">
+          📞 Call Now
+        </button>
+      </div>
+    </header>
+
+    <!-- Error Content -->
+    <main class="error-page">
+      <h1 class="error-code">404</h1>
+      <h2 class="error-title">Page Not Found</h2>
+      <p class="error-description">
+        We apologize, but the page or legal resource you are looking for does not exist, has been removed, or is temporarily unavailable.
+      </p>
+      <a href="{{ url_for('home') }}" class="back-home-btn">Return to Homepage</a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Column 1: Firm Info -->
+        <div class="footer-section about">
+          <a href="{{ url_for('home') }}" class="footer-logo">KALA <span>LAWYER</span></a>
+          <p class="footer-tagline">
+            Upholding justice with legal excellence, integrity, and focused courtroom advocacy. Over 30 years of dedicated legal heritage in Rajasthan.
+          </p>
+                    <div class="footer-contact-info">
+            <p><strong>Office / Res:</strong> GIRAH SHOBHA, 3-A, Chopasani Rd, Near Nasrani Cinema, Jodhpur, RJ</p>
+            <div class="footer-advocate-block">
+              <p class="footer-advocate-name">Dr. Shailendra Kala</p>
+              <p class="footer-advocate-details">📞 +91-9828031187 &nbsp;|&nbsp; ✉️ shailendrakala18@gmail.com</p>
+            </div>
+            <div class="footer-advocate-block">
+              <p class="footer-advocate-name">Advocate Anuj Kala</p>
+              <p class="footer-advocate-details">📞 +91-9828117145 &nbsp;|&nbsp; ✉️ advocateanujkalajodhpur@gmail.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Core Practices -->
+        <div class="footer-section links">
+          <h2>Core Specialties</h2>
+          <ul>
+            <li><a href="{{ url_for('practice_detail', slug='family-law') }}">Matrimonial &amp; Family Law</a></li>
+            <li><a href="{{ url_for('practice_detail', slug='criminal-litigation') }}">Criminal Defense &amp; Appeals</a></li>
+            <li><a href="{{ url_for('practice_detail', slug='civil-litigation') }}">Civil Suits &amp; Injunctions</a></li>
+            <li><a href="{{ url_for('practice_detail', slug='domestic-violence') }}">Domestic Violence Cases</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Navigation -->
+        <div class="footer-section links">
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+            <li><a href="{{ url_for('practice') }}">Practice Area</a></li>
+            <li><a href="{{ url_for('case') }}">Case victories</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 The Kala Lawyers. All Rights Reserved. &nbsp;|&nbsp; <span id="adminTrigger" style="cursor: default; user-select: none;">Professional Advocacy &amp; Counsel.</span></p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

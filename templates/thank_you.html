@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You - The Kala Lawyers</title>
+    <meta name="description" content="Thank you for contacting The Kala Lawyers. We have received your query." />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://thekalalawyers.com/thank_you.html" />
+    
+    <link rel="icon" href="{{ url_for('static', filename='images/kala_lawyer_logo.png') }}" type="image/png" />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <style>
+      .thank-you-page {
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6rem 1.5rem;
+        background-color: var(--background-color);
+      }
+      .thank-you-card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        box-shadow: var(--shadow-premium);
+        max-width: 600px;
+        width: 100%;
+        padding: 4rem 3rem;
+        text-align: center;
+      }
+      .success-icon-wrapper {
+        width: 80px;
+        height: 80px;
+        background-color: rgba(135, 162, 54, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 2rem;
+      }
+      .success-icon {
+        color: var(--accent-color);
+        font-size: 3rem;
+        font-weight: bold;
+      }
+      .thank-you-card h1 {
+        font-family: 'Merriweather', serif;
+        font-size: 2.6rem;
+        color: var(--primary-color);
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+      }
+      .thank-you-card p {
+        color: var(--secondary-color);
+        font-size: 1.15rem;
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+      }
+      .back-btn {
+        display: inline-block;
+        background: var(--accent-color);
+        color: #ffffff;
+        padding: 1rem 2.5rem;
+        border-radius: 6px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background-color 0.2s, transform 0.2s;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .back-btn:hover {
+        background-color: var(--accent-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(160, 120, 85, 0.25);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-main">
+        <!-- Logo -->
+        <a href="{{ url_for('home') }}" class="logo"><img src="{{ url_for('static', filename='images/kala_lawyer_logo.png') }}" alt="Kala Lawyer Logo" />KALA <span>LAWYER</span></a>
+
+        <!-- Burger menu -->
+        <div class="burger-menu" id="burgerMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="nav-panel" id="navPanel">
+          <a href="{{ url_for('home') }}">Home</a>
+          <a href="{{ url_for('about') }}">About Us</a>
+          <a href="{{ url_for('practice') }}">Practice Area</a>
+          <a href="{{ url_for('case') }}">Case</a>
+          <a href="{{ url_for('contact') }}">Contact</a>
+        </nav>
+
+        <!-- Call Now Button -->
+        <button class="button type1" onclick="copyPhoneNumber()">
+          📞 Call Now
+        </button>
+      </div>
+    </header>
+
+    <main class="thank-you-page">
+      <div class="thank-you-card">
+        <div class="success-icon-wrapper">
+          <span class="success-icon">✓</span>
+        </div>
+        <h1>Thank You!</h1>
+        <p>Your enquiry has been successfully logged. Our legal team will review your details and get back to you shortly.</p>
+        <a href="{{ url_for('home') }}" class="back-btn">RETURN TO HOME</a>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- Column 1: Firm Info -->
+        <div class="footer-section about">
+          <a href="{{ url_for('home') }}" class="footer-logo">KALA <span>LAWYER</span></a>
+          <p class="footer-tagline">
+            Upholding justice with legal excellence, integrity, and focused courtroom advocacy. Over 30 years of dedicated legal heritage in Rajasthan.
+          </p>
+                    <div class="footer-contact-info">
+            <p><strong>Office / Res:</strong> GIRAH SHOBHA, 3-A, Chopasani Rd, Near Nasrani Cinema, Jodhpur, RJ</p>
+            <div class="footer-advocate-block">
+              <p class="footer-advocate-name">Dr. Shailendra Kala</p>
+              <p class="footer-advocate-details">📞 +91-9828031187 &nbsp;|&nbsp; ✉️ shailendrakala18@gmail.com</p>
+            </div>
+            <div class="footer-advocate-block">
+              <p class="footer-advocate-name">Advocate Anuj Kala</p>
+              <p class="footer-advocate-details">📞 +91-9828117145 &nbsp;|&nbsp; ✉️ advocateanujkalajodhpur@gmail.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Core Practices -->
+        <div class="footer-section links">
+          <h2>Core Specialties</h2>
+          <ul>
+            <li><a href="{{ url_for('practice_detail', slug='family-law') }}">Matrimonial &amp; Family Law</a></li>
+            <li><a href="{{ url_for('practice_detail', slug='criminal-litigation') }}">Criminal Defense &amp; Appeals</a></li>
+            <li><a href="{{ url_for('practice_detail', slug='civil-litigation') }}">Civil Suits &amp; Injunctions</a></li>
+            <li><a href="{{ url_for('practice_detail', slug='domestic-violence') }}">Domestic Violence Cases</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Navigation -->
+        <div class="footer-section links">
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About Us</a></li>
+            <li><a href="{{ url_for('practice') }}">Practice Area</a></li>
+            <li><a href="{{ url_for('case') }}">Case victories</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+          <p>&copy; 2026 The Kala Lawyers. All Rights Reserved. &nbsp;|&nbsp; <span id="adminTrigger" style="cursor: default; user-select: none;">Professional Advocacy &amp; Counsel.</span></p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

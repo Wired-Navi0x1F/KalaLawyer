@@ -1,0 +1,366 @@
+/* >>>>>>>>>>>>>>>>>>>>>>>>>__CONTACT_SECTION__<<<<<<<<<<<<<<<<<<<<<<<< */
+
+.contact-page {
+  display: flex;
+  gap: 3.5rem;
+  padding: 5rem 2rem;
+  background-color: var(--background-color);
+}
+
+.contact-form-container {
+  flex: 0 0 60%;
+  box-sizing: border-box;
+}
+
+.contact-form, .form-success-card {
+  padding: 3rem;
+  border-radius: 8px;
+  background-color: var(--bg-card);
+  box-shadow: var(--shadow-premium);
+  border: 1px solid var(--border-color);
+}
+
+.form-heading {
+  font-family: 'Merriweather', serif;
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.form-heading span {
+  color: var(--accent-color);
+}
+
+.form-subheading {
+  color: var(--secondary-color);
+  font-size: 0.98rem;
+  line-height: 1.5;
+  margin-bottom: 2.5rem;
+}
+
+.form-field {
+  margin-bottom: 1.8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.form-field label {
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.form-field label strong {
+  color: var(--primary-color);
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.96rem;
+  color: var(--primary-color);
+  background-color: var(--background-color);
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color 0.2s ease, background-color 0.2s;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background-color: #ffffff;
+}
+
+.select-field {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a07855' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.2rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+.select-field option {
+  background-color: #ffffff;
+  color: var(--primary-color);
+}
+
+textarea.input-field {
+  resize: vertical;
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  padding: 1.1rem;
+  background: var(--accent-color);
+  color: #ffffff;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s, box-shadow 0.2s;
+  margin-top: 1rem;
+}
+
+.submit-btn:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(160, 120, 85, 0.25);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Success Card */
+.form-success-card {
+  text-align: center;
+  padding: 4rem 3rem;
+}
+
+.success-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  background-color: rgba(160, 120, 85, 0.1);
+  color: var(--accent-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem auto;
+}
+
+.success-icon {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.form-success-card h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 2.4rem;
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.form-success-card p {
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.success-details {
+  font-size: 0.98rem !important;
+  color: var(--secondary-color) !important;
+  max-width: 480px;
+  margin: 1.5rem auto 2.5rem auto !important;
+  line-height: 1.6;
+}
+
+.reset-form-btn {
+  background-color: transparent;
+  color: var(--accent-color);
+  border: 1px solid var(--border-color);
+  padding: 0.8rem 1.8rem;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reset-form-btn:hover {
+  background-color: rgba(160, 120, 85, 0.05);
+  border-color: var(--accent-color);
+}
+
+/*------Address & Info Section------*/
+.address-section {
+  flex: 0 0 35%;
+  padding: 3rem;
+  border-radius: 8px;
+  background-color: var(--bg-card);
+  box-shadow: var(--shadow-premium);
+  border: 1px solid var(--border-color);
+  color: var(--primary-color);
+  box-sizing: border-box;
+}
+
+.info-heading {
+  font-family: 'Merriweather', serif;
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+  font-weight: 700;
+}
+
+/* Office Selector buttons (KRIA style) */
+.office-selector {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.5rem;
+}
+
+.btn-office {
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--border-color);
+  padding: 0.7rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.btn-office:hover {
+  border-color: var(--accent-color);
+  color: var(--primary-color);
+}
+
+.btn-office.active {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  border-color: var(--accent-color);
+}
+
+.info-block {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 2.2rem;
+  align-items: flex-start;
+}
+
+.info-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--accent-color);
+}
+
+.info-block h3 {
+  margin: 0 0 0.6rem 0;
+  font-size: 1.15rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.info-block p {
+  margin: 0;
+  color: var(--secondary-color);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.contact-persons-section {
+  margin-top: 3rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 2rem;
+}
+
+.contact-persons-section h3 {
+  font-family: 'Merriweather', serif;
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 1.8rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.contact-person-card {
+  background-color: var(--background-color);
+  padding: 1.4rem;
+  border-radius: 6px;
+  margin-bottom: 1.2rem;
+  border: 1px solid var(--border-color);
+  transform-style: preserve-3d;
+  transition: border-color 0.2s, transform 0.15s ease-out;
+}
+
+.contact-person-card:hover {
+  border-color: var(--accent-color);
+}
+
+.contact-person-card h4 {
+  margin: 0 0 0.6rem 0;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.contact-person-card p {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+  color: var(--secondary-color);
+}
+
+.contact-person-card a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.contact-person-card a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* Responsive Overrides */
+@media (max-width: 992px) {
+  .contact-page {
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 3rem 1.5rem;
+  }
+  
+  .contact-form-container, .address-section {
+    flex: 1;
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .contact-form, .form-success-card {
+    padding: 1.5rem;
+  }
+  
+  .form-heading {
+    font-size: 1.6rem;
+  }
+  
+  .office-selector {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

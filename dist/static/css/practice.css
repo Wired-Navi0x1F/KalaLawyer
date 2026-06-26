@@ -1,0 +1,419 @@
+/* >>>>>>>>>>>>>>>>>>>>>>>>>__PRACTICE_SECTION__<<<<<<<<<<<<<<<<<<<<<<<< */
+
+.practice-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.judiciary-emblem-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.judiciary-emblem {
+  height: 90px;
+  width: auto;
+  opacity: 0.9;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  filter: drop-shadow(0 4px 10px rgba(45, 34, 28, 0.08));
+}
+
+.judiciary-emblem:hover {
+  opacity: 1;
+  transform: translateY(-3px) scale(1.02);
+}
+
+.judiciary-text {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-color);
+  margin-top: 0.8rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.85;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.8rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-family: 'Merriweather', serif;
+  margin-top: 0;
+}
+
+.section-title span {
+  color: var(--accent-color);
+}
+
+.section-intro {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+  margin-bottom: 4rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.practice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  padding: 0 1rem;
+}
+
+.practice-card {
+  position: relative;
+  background: var(--bg-card);
+  padding: 3rem 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-premium);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  transform-style: preserve-3d;
+  transition: border-color 0.3s ease, transform 0.1s ease-out, box-shadow 0.3s ease;
+}
+
+.practice-card:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 12px 40px rgba(60, 47, 47, 0.06);
+}
+
+.card-icon {
+  font-size: 2.8rem;
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+  line-height: 1;
+}
+
+.practice-card h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.practice-card p {
+  font-size: 0.96rem;
+  color: var(--secondary-color);
+  margin-bottom: 2rem;
+  padding: 0;
+  flex-grow: 1;
+  line-height: 1.6;
+}
+
+.expand-button {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  padding: 0.75rem 1.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s ease, transform 0.2s;
+}
+
+.expand-button:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>__PRACTICE_DETAIL_SECTION__<<<<<<<<<<<<<<<<<<<<<<<< */
+.practice-detail-container {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 3.5rem;
+  background: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: var(--shadow-premium);
+  border: 1px solid var(--border-color);
+}
+
+.back-link {
+  margin-bottom: 2.5rem;
+}
+
+.back-link a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+  display: inline-block;
+}
+
+.back-link a:hover {
+  color: var(--primary-color);
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+  margin-bottom: 3rem;
+}
+
+.detail-icon {
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--accent-color);
+}
+
+.detail-header h1 {
+  font-family: 'Merriweather', serif;
+  font-size: 2.6rem;
+  color: var(--primary-color);
+  margin: 0;
+  font-weight: 700;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3.5rem;
+}
+
+.detail-main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.description-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--secondary-color);
+  text-align: justify;
+}
+
+.specialties-section h2,
+.statutes-section h2,
+.faqs-section h2,
+.description-section h2 {
+  font-family: 'Merriweather', serif;
+  color: var(--primary-color);
+  font-size: 1.6rem;
+  margin-bottom: 1.8rem;
+  border-left: 4px solid var(--accent-color);
+  padding-left: 0.8rem;
+  font-weight: 700;
+}
+
+.specialties-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.specialties-list li {
+  font-size: 1.02rem;
+  color: var(--secondary-color);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  line-height: 1.5;
+}
+
+.check-mark {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.statutes-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.statute-tag {
+  background: var(--background-color);
+  color: var(--primary-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+}
+
+/* Accordion FAQs styles */
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.faq-item {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.faq-item:hover {
+  border-color: var(--accent-color);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 1.4rem 1.8rem;
+  background: #ffffff;
+  border: none;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question:hover {
+  background-color: var(--background-color);
+}
+
+.faq-arrow {
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: var(--background-color);
+  border-top: 1px solid var(--border-color);
+}
+
+.faq-answer p {
+  padding: 1.4rem 1.8rem;
+  margin: 0;
+  color: var(--secondary-color);
+  line-height: 1.7;
+  font-size: 0.98rem;
+}
+
+/* Sidebar styles */
+.detail-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sidebar-cta-card {
+  background: var(--primary-color);
+  color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 8px;
+  text-align: center;
+  position: sticky;
+  top: 100px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-premium);
+}
+
+.sidebar-cta-card h3 {
+  font-family: 'Merriweather', serif;
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+}
+
+.sidebar-cta-card p {
+  color: var(--border-color);
+  margin-bottom: 2.2rem;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.sidebar-cta-btn {
+  display: block;
+  background: var(--accent-color);
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background-color 0.2s ease, transform 0.2s, box-shadow 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar-cta-btn:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(160, 120, 85, 0.3);
+}
+
+.sidebar-contact-info {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.8rem;
+}
+
+.sidebar-contact-info p {
+  margin-bottom: 0.6rem;
+  color: var(--border-color);
+}
+
+.phone-link {
+  color: var(--highlight-color);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.phone-link:hover {
+  color: #ffffff;
+}
+
+/* Responsive Practice Detail */
+@media (max-width: 992px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .sidebar-cta-card {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+  
+  .detail-header h1 {
+    font-size: 2rem;
+  }
+  
+  .specialties-list {
+    grid-template-columns: 1fr;
+  }
+}

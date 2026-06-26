@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+
+    <link rel="icon" href="static/images/kala_lawyer_logo.png" type="image/png" />
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CMS Dashboard - The Kala Lawyers</title>
+
+    <link
+
+      rel="stylesheet"
+
+      href="static/css/styles.css"
+
+    />
+
+    <style>
+      :root {
+        --primary-color: #2d221c;        /* Deep luxury warm espresso */
+        --background-color: #fcfbfa;     /* Premium soft ivory-white background */
+        --bg-card: #ffffff;              /* Crisp clean white for cards */
+        --border-color: #e5dacd;         /* Soft cream-brown borders */
+        --text-color: #2d221c;           /* Deep espresso text */
+        --light-text: #6b5a50;           /* Soft grey-brown descriptions */
+        --accent-color: #b38a66;         /* Premium brushed bronze gold */
+        --accent-hover: #966f4d;         /* Darker bronze gold */
+        --highlight-color: #b38a66;      /* Highlight bronze gold */
+        --shadow-premium: 0 8px 30px rgba(45, 34, 28, 0.05); /* Soft warm brown shadow */
+      }
+
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+      }
+
+      .admin-page {
+        padding: 4rem 2rem;
+        min-height: calc(100vh - 80px);
+      }
+
+      .admin-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2.5rem;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 1.5rem;
+      }
+
+      .admin-header h1 {
+        font-family: 'Merriweather', serif;
+        font-size: 2.2rem;
+        color: var(--primary-color);
+        margin: 0;
+      }
+
+      .admin-header h1 span {
+        color: var(--accent-color);
+      }
+
+      .logout-btn {
+        background-color: transparent;
+        color: #ef4444;
+        border: 1px solid rgba(239, 68, 68, 0.4);
+        padding: 0.6rem 1.4rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+      }
+
+      .logout-btn:hover {
+        background-color: rgba(239, 68, 68, 0.05);
+        border-color: #ef4444;
+        color: #b91c1c;
+      }
+
+      /* Tabs Menu */
+      .tabs-menu {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 1rem;
+        overflow-x: auto;
+      }
+
+      .tab-btn {
+        background: #f2ebe4;
+        color: var(--light-text);
+        border: 1px solid var(--border-color);
+        padding: 0.8rem 1.6rem;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+
+      .tab-btn:hover {
+        border-color: var(--accent-color);
+        color: var(--primary-color);
+        background-color: #e5dacd;
+      }
+
+      .tab-btn.active {
+        background-color: var(--accent-color);
+        color: #ffffff;
+        border-color: var(--accent-color);
+        box-shadow: 0 4px 15px rgba(179, 138, 102, 0.2);
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      /* KPI Metrics Summary Grid */
+      .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .kpi-card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow-premium);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        transition: transform 0.2s, border-color 0.2s;
+      }
+
+      .kpi-card:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent-color);
+      }
+
+      .kpi-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--light-text);
+        font-weight: 700;
+      }
+
+      .kpi-value {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: var(--primary-color);
+        font-family: 'Merriweather', serif;
+      }
+
+      /* Search & Filter Panel */
+      .search-filter-panel {
+        display: flex;
+        gap: 1.5rem;
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 2.5rem;
+        box-shadow: var(--shadow-premium);
+      }
+
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .flex-1 { flex: 1; }
+      .flex-2 { flex: 2; }
+
+      .filter-group label {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--light-text);
+      }
+
+      /* Stats and Charts Panel */
+      .analytics-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+        margin-bottom: 3rem;
+      }
+
+      .chart-card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: var(--shadow-premium);
+        min-height: 320px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .chart-card h3 {
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        color: var(--primary-color);
+        font-size: 1.2rem;
+        font-family: 'Merriweather', serif;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.5rem;
+      }
+
+      .chart-container {
+        position: relative;
+        height: 250px;
+        width: 100%;
+      }
+
+      /* Leads list table styles */
+      .table-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .export-btn {
+        background-color: var(--accent-color);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 0.7rem 1.4rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+      }
+
+      .export-btn:hover {
+        background-color: var(--accent-hover);
+        transform: translateY(-2px);
+      }
+
+      .table-container {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        box-shadow: var(--shadow-premium);
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-size: 0.95rem;
+      }
+
+      th {
+        background-color: rgba(179, 138, 102, 0.08);
+        color: var(--primary-color);
+        padding: 1.2rem 1.5rem;
+        font-weight: 600;
+        border-bottom: 2px solid var(--border-color);
+      }
+
+      td {
+        padding: 1.2rem 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+        color: var(--text-color);
+        vertical-align: middle;
+      }
+
+      tr:hover td {
+        background-color: rgba(179, 138, 102, 0.03);
+      }
+
+      .timestamp {
+        font-size: 0.85rem;
+        color: var(--light-text);
+        white-space: nowrap;
+      }
+
+      /* Status Badge Select selectors */
+      .lead-status-select {
+        border: 1px solid var(--border-color);
+        padding: 0.4rem 0.7rem;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        cursor: pointer;
+        outline: none;
+        transition: all 0.2s;
+        font-family: inherit;
+        background-color: var(--bg-card);
+      }
+
+      .status-new {
+        background-color: rgba(239, 68, 68, 0.1);
+        color: #dc2626;
+        border-color: rgba(239, 68, 68, 0.3);
+      }
+
+      .status-progress {
+        background-color: rgba(245, 158, 11, 0.1);
+        color: #d97706;
+        border-color: rgba(245, 158, 11, 0.3);
+      }
+
+      .status-contacted {
+        background-color: rgba(59, 130, 246, 0.1);
+        color: #2563eb;
+        border-color: rgba(59, 130, 246, 0.3);
+      }
+
+      .status-resolved {
+        background-color: rgba(16, 185, 129, 0.1);
+        color: #059669;
+        border-color: rgba(16, 185, 129, 0.3);
+      }
+
+      .btn-delete {
+        background-color: rgba(239, 68, 68, 0.1);
+        color: #dc2626;
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: inline-block;
+      }
+
+      .btn-delete:hover {
+        background-color: #ef4444;
+        border-color: #ef4444;
+        color: #ffffff;
+      }
+
+      /* CMS Form inputs */
+      .cms-editor {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 3rem;
+      }
+
+      .cms-form-card {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
+        padding: 2.5rem;
+        border-radius: 8px;
+        box-shadow: var(--shadow-premium);
+        height: fit-content;
+      }
+
+      .cms-form-card h3 {
+        margin-top: 0;
+        margin-bottom: 1.8rem;
+        color: var(--primary-color);
+        font-family: 'Merriweather', serif;
+        font-size: 1.3rem;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.8rem;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        font-size: 0.95rem;
+        box-sizing: border-box;
+        margin-bottom: 1.2rem;
+        font-family: inherit;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        background-color: #ffffff;
+      }
+
+      .form-label {
+        font-size: 0.9rem;
+        color: var(--light-text);
+        margin-bottom: 0.5rem;
+        display: block;
+        font-weight: 600;
+      }
+
+      .btn-submit {
+        background-color: var(--accent-color);
+        color: #ffffff;
+        width: 100%;
+        padding: 0.9rem;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .btn-submit:hover {
+        background-color: var(--accent-hover);
+        transform: translateY(-2px);
+      }
+
+      .cms-list {
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-color);
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: var(--shadow-premium);
+      }
+
+      .cms-list h3 {
+        margin-top: 0;
+        margin-bottom: 1.8rem;
+        color: var(--primary-color);
+        font-family: 'Merriweather', serif;
+        font-size: 1.3rem;
+      }
+
+      .cms-item-card {
+        background-color: var(--background-color);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        padding: 1.5rem;
+        margin-bottom: 1.2rem;
+        position: relative;
+      }
+
+      .cms-item-card h4 {
+        margin: 0 0 0.8rem 0;
+        color: var(--primary-color);
+        font-size: 1.15rem;
+        font-family: 'Merriweather', serif;
+      }
+
+      .cms-item-card p {
+        margin: 0 0 1.2rem 0;
+        color: var(--light-text);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .cms-item-actions {
+        display: flex;
+        gap: 0.8rem;
+      }
+
+      .btn-edit {
+        background-color: rgba(179, 138, 102, 0.1);
+        color: var(--primary-color);
+        border: 1px solid rgba(179, 138, 102, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+      }
+
+      .btn-edit:hover {
+        background-color: var(--accent-color);
+        color: #ffffff;
+      }
+
+      /* Responsive dashboard */
+      @media (max-width: 992px) {
+        .kpi-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .search-filter-panel {
+          flex-direction: column;
+          gap: 1rem;
+        }
+        .analytics-grid, .cms-editor {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+      }
+      @media (max-width: 768px) {
+        .admin-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+        }
+        .admin-page {
+          padding: 2rem 1rem;
+        }
+        .header-main {
+          padding: 1rem 1.5rem;
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+      }
+      @media (max-width: 576px) {
+        .kpi-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <!-- Header -->
+
+    <header>
+
+      <div class="header-main">
+
+        <div class="logo"><img src="static/images/kala_lawyer_logo.png" alt="Kala Lawyer Logo" />KALA LAWYER <span>ADMIN</span></div>
+
+        <nav class="nav-panel">
+
+          <a href="index.html" target="_blank">View Website ↗</a>
+
+        </nav>
+
+        <a href="#" id="logoutBtn" class="logout-btn">Logout</a>
+
+      </div>
+
+    </header>
+
+
+
+    <main class="admin-page">
+
+      <div class="container">
+
+        <div class="admin-header">
+
+          <h1>CMS <span>Control Panel</span></h1>
+
+        </div>
+
+
+
+        <!-- Navigation Tabs -->
+
+        <div class="tabs-menu">
+
+          <button class="tab-btn active" onclick="switchTab(event, 'tab-dashboard')">Dashboard Analytics</button>
+
+          <button class="tab-btn" onclick="switchTab(event, 'tab-leads')">Client Enquiries (0)</button>
+
+          <button class="tab-btn" onclick="switchTab(event, 'tab-cases')">Successful Case Wins (0)</button>
+
+          <button class="tab-btn" onclick="switchTab(event, 'tab-practices')">Practice Areas (10)</button>
+
+        </div>
+
+
+
+        <!-- KPI Metrics Summary Grid -->
+
+        <div class="kpi-grid">
+
+          <div class="kpi-card">
+
+            <span class="kpi-label">Total Leads</span>
+
+            <span class="kpi-value" id="kpiTotalLeads">0</span>
+
+          </div>
+
+          <div class="kpi-card">
+
+            <span class="kpi-label">Pending Review</span>
+
+            <span class="kpi-value" id="kpiPendingLeads" style="color: #f87171;">0</span>
+
+          </div>
+
+          <div class="kpi-card">
+
+            <span class="kpi-label">Successful Wins</span>
+
+            <span class="kpi-value" id="kpiTotalCases" style="color: var(--highlight-color);">0</span>
+
+          </div>
+
+          <div class="kpi-card">
+
+            <span class="kpi-label">Practice Areas</span>
+
+            <span class="kpi-value" id="kpiTotalPractices" style="color: #4ade80;">0</span>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- TAB 1: DASHBOARD ANALYTICS -->
+
+        <div id="tab-dashboard" class="tab-content active">
+
+          <div class="analytics-grid">
+
+            <div class="chart-card">
+
+              <h3>Enquiries by Area of Concern</h3>
+
+              <div class="chart-container">
+
+                <canvas id="practiceChart"></canvas>
+
+              </div>
+
+            </div>
+
+            <div class="chart-card">
+
+              <h3>Enquiries by Referral Channel</h3>
+
+              <div class="chart-container">
+
+                <canvas id="referralChart"></canvas>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- TAB 2: CLIENT ENQUIRIES -->
+
+        <div id="tab-leads" class="tab-content">
+
+          <!-- Search & Filter Controls -->
+
+          <div class="search-filter-panel">
+
+            <div class="filter-group flex-2">
+
+              <label for="leadSearch">Search Submissions</label>
+
+              <input type="text" id="leadSearch" class="form-control" placeholder="Search by name, email, phone, message content..." />
+
+            </div>
+
+            <div class="filter-group flex-1">
+
+              <label for="leadPracticeFilter">Filter by Practice Area</label>
+
+              <select id="leadPracticeFilter" class="form-control">
+
+                <option value="">All Practice Areas</option>
+
+                
+
+                <option value="Matrimonial & Family Law">Matrimonial & Family Law</option>
+
+                
+
+                <option value="Commercial Matters & Commercial Courts">Commercial Matters & Commercial Courts</option>
+
+                
+
+                <option value="Domestic Violence Protection">Domestic Violence Protection</option>
+
+                
+
+                <option value="Marriage and Dowry Offences">Marriage and Dowry Offences</option>
+
+                
+
+                <option value="Cheque Dishonour (Section 138)">Cheque Dishonour (Section 138)</option>
+
+                
+
+                <option value="Civil Litigation">Civil Litigation</option>
+
+                
+
+                <option value="Criminal Litigation">Criminal Litigation</option>
+
+                
+
+                <option value="Arbitration & ADR">Arbitration & ADR</option>
+
+                
+
+                <option value="Consumer Protection">Consumer Protection</option>
+
+                
+
+                <option value="Labour and Service Laws">Labour and Service Laws</option>
+
+                
+
+                <option value="Other">Other / Not Listed</option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="table-header-row">
+
+            <h2 style="margin:0; font-size: 1.5rem; font-family: 'Merriweather', serif;">Logged Submissions</h2>
+
+            <a href="#" class="export-btn">📥 Export to CSV</a>
+
+          </div>
+
+
+
+          <div class="table-container" id="leadsTableContainer" style="display: none;">
+
+            <table>
+
+              <thead>
+
+                <tr>
+
+                  <th>Date</th>
+
+                  <th>Name</th>
+
+                  <th>Area / Company</th>
+
+                  <th>Contact Details</th>
+
+                  <th>Referred By</th>
+
+                  <th>Description</th>
+
+                  <th>Lead Status</th>
+
+                  <th>Action</th>
+
+                </tr>
+
+              </thead>
+
+              <tbody id="leadsTableBody">
+
+                <!-- Populated dynamically via JS -->
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+
+
+          <div id="noLeadsMessage" style="padding: 4rem; text-align: center; color: var(--light-text); display: none;">
+
+            <p>No client evaluations or enquiries have been logged yet.</p>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- TAB 3: SUCCESSFUL CASE WINS CMS -->
+
+        <div id="tab-cases" class="tab-content">
+
+          <div class="cms-editor">
+
+            <!-- Add/Edit Form -->
+
+            <div class="cms-form-card">
+
+              <h3 id="caseFormTitle">Add Case Win</h3>
+
+              <form id="caseForm" method="POST" action="#" enctype="multipart/form-data">
+
+                <input type="hidden" name="csrf_token" value=""/>
+
+                <input type="hidden" id="case_id" name="case_id" />
+
+                
+
+                <label class="form-label" for="case_title">Case / Judgment Title *</label>
+
+                <input type="text" id="case_title" name="title" class="form-control" placeholder="e.g. Secured Anticipatory Bail in Sec 498A" required />
+
+                
+
+                <label class="form-label" for="case_category">Case Category</label>
+
+                <input type="text" id="case_category" name="category" class="form-control" placeholder="e.g. Criminal Law" />
+
+
+
+                <label class="form-label" for="case_pdf_file">Upload PDF Judgment File</label>
+
+                <input type="file" id="case_pdf_file" name="pdf_file" class="form-control" accept=".pdf" style="background-color: rgba(9, 10, 7, 0.4); color: #ffffff;" />
+
+                
+
+                <label class="form-label" for="case_pdf">PDF Filename (Editable / Changeable)</label>
+
+                <input type="text" id="case_pdf" name="pdf_filename" class="form-control" placeholder="e.g. judgment.pdf" />
+
+
+
+                <label class="form-label" for="case_desc">Victory Description *</label>
+
+                <textarea id="case_desc" name="description" class="form-control" rows="5" placeholder="Summarize the legal victory details..." required></textarea>
+
+
+
+                <button type="submit" class="btn-submit" id="caseSubmitBtn">SAVE RECORD</button>
+
+                <button type="button" class="btn-delete" id="caseResetBtn" style="margin-top: 0.8rem; width: 100%; display: none;" onclick="resetCaseWinForm()">Cancel Edit</button>
+
+              </form>
+
+            </div>
+
+
+
+            <!-- List of Case Wins -->
+      <div class="cms-list">
+        <h3>Existing Case Wins</h3>
+        <div id="casesListContainer">
+          <!-- Populated dynamically via JS -->
+        </div>
+        <p id="noCasesMessage" style="color: var(--light-text); display: none;">No case victories have been entered yet.</p>
+      </div>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- TAB 4: PRACTICE AREAS CMS -->
+
+        <div id="tab-practices" class="tab-content">
+
+          <div class="cms-editor">
+
+            <!-- Edit Form -->
+
+            <div class="cms-form-card" style="position: sticky; top: 100px;">
+
+              <h3>Edit Practice Area</h3>
+
+              <p style="color: var(--light-text); font-size: 0.9rem; margin-top:-1rem; margin-bottom:1.5rem;">Select a practice area from the list to modify its content details.</p>
+
+              <form id="practiceForm" method="POST" action="">
+
+                <input type="hidden" name="csrf_token" value=""/>
+
+                
+
+                <label class="form-label" for="practice_title">Area Title</label>
+
+                <input type="text" id="practice_title" class="form-control" readonly placeholder="Select a practice area" />
+
+
+
+                <label class="form-label" for="practice_short">Short Description *</label>
+
+                <input type="text" id="practice_short" name="short_description" class="form-control" required />
+
+
+
+                <label class="form-label" for="practice_long">Long Detailed Description *</label>
+
+                <textarea id="practice_long" name="long_description" class="form-control" rows="5" required></textarea>
+
+
+
+                <label class="form-label" for="practice_specialties">Core Specialties (One per line) *</label>
+
+                <textarea id="practice_specialties" name="specialties" class="form-control" rows="4" placeholder="Enter specialties..." required></textarea>
+
+
+
+                <label class="form-label" for="practice_statutes">Key Statutes (One per line) *</label>
+
+                <textarea id="practice_statutes" name="statutes" class="form-control" rows="3" placeholder="Enter statutes..." required></textarea>
+
+
+
+                <button type="submit" class="btn-submit" id="practiceSubmitBtn" disabled>SAVE CHANGES</button>
+
+              </form>
+
+            </div>
+
+
+
+            <!-- List of Practice Areas -->
+
+            <div class="cms-list">
+
+              <h3>Available Practice Areas</h3>
+
+              
+
+              <div class="cms-item-card" id="practice-card-">
+
+                <h4 style="color: var(--highlight-color);">👥 Matrimonial & Family Law</h4>
+
+                <p><strong>Short Description:</strong> Representation in divorce, custody, and family matters.</p>
+
+                <div class="cms-item-actions">
+
+                  <button class="btn-edit" onclick="loadPracticeAreaForEdit({"faqs": [{"answer": "Mutual consent divorce is governed by Section 13-B of the Hindu Marriage Act. Both parties must jointly file a petition stating they have been living separately for at least one year and cannot live together. A six-month cooling-off period is usually mandated, after which the second motion is moved for the final decree.", "question": "What is the procedure for mutual consent divorce in India?"}, {"answer": "Under Section 125 CrPC and personal laws, courts determine maintenance based on the financial status, income, properties, and standard of living of both spouses. The court ensures that the dependent spouse is provided enough support to maintain a lifestyle similar to their matrimonial home.", "question": "How is maintenance (alimony) determined by the courts?"}], "icon": "\ud83d\udc65", "long_description": "Our matrimonial practice is dedicated to helping clients navigate sensitive family issues with dignity and legal precision. We cover all aspects of marriage dissolution, alimony, division of marital assets, and child custody disputes under Indian family laws.", "short_description": "Representation in divorce, custody, and family matters.", "slug": "family-law", "specialties": ["Mutual Consent Divorce (Section 13-B, HMA)", "Contested Divorce Proceedings", "Child Custody \u0026 Guardianship", "Maintenance \u0026 Alimony Claims", "Restitution of Conjugal Rights"], "statutes": ["Hindu Marriage Act, 1955", "Special Marriage Act, 1954", "Guardian and Wards Act, 1890"], "title": "Matrimonial \u0026 Family Law"})">Edit Details ✏️</button>
+
+                </div>
+
+              </div>
+
+              
+
+              <div class="cms-item-card" id="practice-card-">
+
+                <h4 style="color: var(--highlight-color);">🏢 Commercial Matters & Commercial Courts</h4>
+
+                <p><strong>Short Description:</strong> Litigation and resolution of high-value commercial disputes under the Commercial Courts Act.</p>
+
+                <div class="cms-item-actions">
+
+                  <button class="btn-edit" onclick="loadPracticeAreaForEdit({"faqs": [{"answer": "Under the Commercial Courts Act, 2015 (as amended in 2018), the specified value of a commercial dispute must be at least \u20b93 Lakhs to fall under the jurisdiction of the Commercial Courts.", "question": "What is the pecuniary limit for a dispute to be tried by a Commercial Court?"}, {"answer": "Yes, under Section 12-A of the Commercial Courts Act, pre-institution mediation is mandatory unless the plaintiff seeks urgent interim relief from the court.", "question": "Is mediation mandatory before filing a commercial suit?"}], "icon": "\ud83c\udfe2", "long_description": "Our firm specializes in handling high-stakes commercial disputes before the dedicated Commercial Courts. We provide comprehensive legal representation in commercial contracts, joint venture disputes, partnership claims, intellectual property matters, and real estate transactions. We navigate the specialized procedures under the Commercial Courts Act, 2015, including pre-institution mediation, summary trials, and strict case management timelines to secure swift and effective resolutions for our clients.", "short_description": "Litigation and resolution of high-value commercial disputes under the Commercial Courts Act.", "slug": "commercial-disputes", "specialties": ["Commercial Contract Enforcement \u0026 Disputes", "Partnership \u0026 Joint Venture Claims", "Summary Suits under Order XXXVII of CPC", "Pre-Institution Mediation \u0026 Settlement", "Arbitration \u0026 Execution of Commercial Decrees"], "statutes": ["Commercial Courts Act, 2015", "Indian Contract Act, 1872", "Specific Relief Act, 1963", "Code of Civil Procedure, 1908 (Commercial Amendments)"], "title": "Commercial Matters \u0026 Commercial Courts"})">Edit Details ✏️</button>
+
+                </div>
+
+              </div>
+
+              
+
+              <div class="cms-item-card" id="practice-card-">
+
+                <h4 style="color: var(--highlight-color);">📊 Domestic Violence Protection</h4>
+
+                <p><strong>Short Description:</strong> Support and representation under the Domestic Violence Act, 2005.</p>
+
+                <div class="cms-item-actions">
+
+                  <button class="btn-edit" onclick="loadPracticeAreaForEdit({"faqs": [{"answer": "Any woman who is, or has been, in a shared household with the respondent and alleges to have been subjected to any form of domestic violence (physical, emotional, sexual, or economic) by the respondent can file a complaint.", "question": "Who can file a case under the Domestic Violence Act, 2005?"}, {"answer": "The magistrate can pass interim protection orders, direct the respondent to pay monetary relief, secure alternative accommodation or pass residence orders, and grant temporary custody of children.", "question": "What immediate relief can a magistrate grant in a DV case?"}], "icon": "\ud83d\udcca", "long_description": "We provide robust legal advocacy for protection, residence orders, and compensation in domestic violence cases. We represent both survivors seeking urgent protection and individuals defending against false allegations.", "short_description": "Support and representation under the Domestic Violence Act, 2005.", "slug": "domestic-violence", "specialties": ["Filing Protection Orders \u0026 Residence Orders", "Monetary Relief \u0026 Compensation Claims", "Interim Relief Applications", "Defense against false DV allegations"], "statutes": ["Protection of Women from Domestic Violence Act, 2005", "Code of Criminal Procedure, 1973"], "title": "Domestic Violence Protection"})">Edit Details ✏️</button>
+
+                </div>
+
+              </div>
+
+              
+
+              <div class="cms-item-card" id="practice-card-">
+
+                <h4 style="color: var(--highlight-color);">📖 Marriage and Dowry Offences</h4>
+
+                <p><strong>Short Description:</strong> Legal assistance for dowry disputes and marriage-related cases.</p>
+
+                <div class="cms-item-actions">
+
+                  <button class="btn-edit" onclick="loadPracticeAreaForEdit({"faqs": [{"answer": "If a false 498-A FIR is filed, the accused can apply for anticipatory bail to prevent arrest. They can also file a petition under Section 482 of the CrPC in the High Court for quashing the FIR if there is no prima facie case or if it is malicious.", "question": "What options are available if a false Section 498-A case is filed?"}], "icon": "\ud83d\udcd6", "long_description": "Handling delicate criminal matters related to marriage, including dowry harassment allegations (Section 498-A IPC) and Dowry Prohibition Act violations, with standard trials, anticipatory bail, and quashing proceedings.", "short_description": "Legal assistance for dowry disputes and marriage-related cases.", "slug": "marriage-dowry", "specialties": ["Anticipatory \u0026 Regular Bail in 498A IPC", "Quashing of FIRs under Section 482 CrPC", "Trial Defense \u0026 Cross-examination", "Mediation \u0026 Settlement Assistance"], "statutes": ["Indian Penal Code, 1860 (Section 498-A)", "Dowry Prohibition Act, 1961", "Code of Criminal Procedure, 1973"], "title": "Marriage and Dowry Offences"})">Edit Details ✏️</button>
+
+                </div>
+
+              </div>
+
+              
+
+              <div class="cms-item-card" id="practice-card-">
+
+                <h4 style="color: var(--highlight-color);">💳 Cheque Dishonour (Section 138)</h4>
+
+                <p><strong>Short Description:</strong> Legal representation in dishonoured cheque and financial recovery cases.</p>
+
+                <div class="cms-item-actions">
+
+                  <button class="btn-edit" onclick="loadPracticeAreaForEdit({"faqs": [{"answer": "A statutory demand notice must be sent within 30 days of receiving the cheque return memo. If the drawer fails to make the payment within 15 days of notice receipt, the complaint must be filed before the Magistrate court within 30 days thereafter.", "question": "What is the time limit to file a cheque bounce complaint?"}, {"answer": "Yes, Section 138 of the NI Act is a criminal offence. Upon conviction, the court can sentence the accused to imprisonment for a term up to two years, or a fine which may extend to twice the amount of the cheque, or both.", "question": "Can cheque bounce lead to imprisonment?"}], "icon": "\ud83d\udcb3", "long_description": "Comprehensive litigation services for cheque bounce cases. We handle the process from legal notice issuance to criminal complaints under the Negotiable Instruments Act for both complainants and defendants.", "short_description": "Legal representation in dishonoured cheque and financial recovery cases.", "slug": "cheque-dishonour", "specialties": ["Drafting \u0026 Issuing Statutory Demand Notices", "Filing Complaints under Sec 138 NI Act", "Corporate Financial Dispute Resolution", "Defense Representation \u0026 Trials"], "statutes": ["Negotiable Instruments Act, 1881 (Section 138)", "Code of Criminal Procedure, 1973"], "title": "Cheque Dishonour (Section 138)"})">Edit Details ✏️</button>
+
+                </div>
+
+              </div>
+
+              
+
+              <div class="cms-item-card" id="practice-card-">
+
+                <h4 style="color: var(--highlight-color);">📈 Civil Litigation</h4>
+
+                <p><strong>Short Description:</strong> Support in civil disputes, property claims, contracts, and resolutions.</p>
+
+                <div class="cms-item-actions">
+
+                  <button class="btn-edit" onclick="loadPracticeAreaForEdit({"faqs": [{"answer": "A partition suit is filed when co-owners of a property cannot agree on their respective shares or partition. The court determines the shares of each co-owner and directs physical division or sale of the property to distribute proceeds.", "question": "What is a suit for partition?"}], "icon": "\ud83d\udcc8", "long_description": "Representation in property disputes, contract enforcement, injunctions, declarations, and succession matters in Jodhpur courts and Rajasthan High Court.", "short_description": "Support in civil disputes, property claims, contracts, and resolutions.", "slug": "civil-litigation", "specialties": ["Property \u0026 Partition Suits", "Specific Performance of Contracts", "Injunctions \u0026 Declaratory Suits", "Succession, Wills, \u0026 Probate Matters"], "statutes": ["Code of Civil Procedure, 1908", "Indian Contract Act, 1872", "Specific Relief Act, 1963", "Indian Succession Act, 1925"], "title": "Civil Litigation"})">Edit Details ✏️</button>
+
+                </div>
+
+              </div>
+
+              
+
+              <div class="cms-item-card" id="practice-card-">
+
+                <h4 style="color: var(--highlight-color);">⚖️ Criminal Litigation</h4>
+
+                <p><strong>Short Description:</strong> Representation in criminal trials, appeals, revisions, and bail matters.</p>
+
+                <div class="cms-item-actions">
+
+                  <button class="btn-edit" onclick="loadPracticeAreaForEdit({"faqs": [{"answer": "Anticipatory bail (Sec 438 CrPC) is applied for in anticipation of arrest for a non-bailable offence, directing that the person be released on bail immediately if arrested. Regular bail (Sec 437/439 CrPC) is applied for after a person has been arrested and is in custody.", "question": "What is the difference between active bail and anticipatory bail?"}], "icon": "\u2696\ufe0f", "long_description": "Defense advocacy in criminal matters. We handle bail hearings, criminal trials, appeals, revisions, and writ petitions before trial courts, sessions courts, and the High Court.", "short_description": "Representation in criminal trials, appeals, revisions, and bail matters.", "slug": "criminal-litigation", "specialties": ["Regular \u0026 Anticipatory Bail Applications", "Criminal Appeals \u0026 Revisions", "Defense in IPC and Special Act trials", "FIR Quashing \u0026 Suspension of Sentence"], "statutes": ["Indian Penal Code, 1860 (Bharatiya Nyaya Sanhita)", "Code of Criminal Procedure, 1973 (Bharatiya Nagarik Suraksha Sanhita)", "Indian Evidence Act, 1872"], "title": "Criminal Litigation"})">Edit Details ✏️</button>
+
+                </div>
+
+              </div>
+
+              
+
+              <div class="cms-item-card" id="practice-card-">
+
+                <h4 style="color: var(--highlight-color);">📓 Arbitration & ADR</h4>
+
+                <p><strong>Short Description:</strong> Alternative dispute resolution through arbitration and conciliation.</p>
+
+                <div class="cms-item-actions">
+
+                  <button class="btn-edit" onclick="loadPracticeAreaForEdit({"faqs": [{"answer": "Yes, under Section 34 of the Arbitration and Conciliation Act, an award can be challenged on limited grounds such as lack of proper notice, incapacity of parties, dispute not falling within terms of arbitration, or conflict with public policy of India.", "question": "Can an arbitration award be challenged in court?"}], "icon": "\ud83d\udcd3", "long_description": "Helping commercial and private parties resolve disputes efficiently outside courtrooms. We advise on arbitration clauses, represent clients in domestic arbitrations, and handle court petitions for arbitrator appointments.", "short_description": "Alternative dispute resolution through arbitration and conciliation.", "slug": "arbitration", "specialties": ["Representing clients in Arbitration tribunals", "Appointment of Arbitrators under Section 11", "Challenging Arbitration Awards under Section 34", "Enforcement of Arbitral Awards"], "statutes": ["Arbitration and Conciliation Act, 1996"], "title": "Arbitration \u0026 ADR"})">Edit Details ✏️</button>
+
+                </div>
+
+              </div>
+
+              
+
+              <div class="cms-item-card" id="practice-card-">
+
+                <h4 style="color: var(--highlight-color);">📋 Consumer Protection</h4>
+
+                <p><strong>Short Description:</strong> Advocacy in consumer rights, product liability, and protection cases.</p>
+
+                <div class="cms-item-actions">
+
+                  <button class="btn-edit" onclick="loadPracticeAreaForEdit({"faqs": [{"answer": "Deficiency means any fault, imperfection, shortcoming or inadequacy in the quality, nature, and manner of performance which is required to be maintained by or under any law or contract in relation to any service.", "question": "What is \u0027deficiency in service\u0027 under the Consumer Protection Act?"}], "icon": "\ud83d\udccb", "long_description": "Advocating for consumers and defending businesses in product liability, service deficiency, and unfair trade practices before District, State, and National Consumer Forums.", "short_description": "Advocacy in consumer rights, product liability, and protection cases.", "slug": "consumer-protection", "specialties": ["Filing Complaints for Deficiency in Service", "Product Liability Claims", "Insurance Claim Disputes", "Appeals before State Commissions"], "statutes": ["Consumer Protection Act, 2019"], "title": "Consumer Protection"})">Edit Details ✏️</button>
+
+                </div>
+
+              </div>
+
+              
+
+              <div class="cms-item-card" id="practice-card-">
+
+                <h4 style="color: var(--highlight-color);">📍 Labour and Service Laws</h4>
+
+                <p><strong>Short Description:</strong> Compliance, employment contracts, and representation in labour disputes.</p>
+
+                <div class="cms-item-actions">
+
+                  <button class="btn-edit" onclick="loadPracticeAreaForEdit({"faqs": [{"answer": "CAT was established to adjudicate disputes and complaints regarding recruitment and conditions of service of persons appointed to public services and posts in connection with the affairs of the Union or other local authorities.", "question": "What is the role of the Central Administrative Tribunal (CAT)?"}], "icon": "\ud83d\udccd", "long_description": "Providing legal assistance in industrial disputes, service matters of government employees, domestic inquiries, suspension challenges, and compliance with labour codes.", "short_description": "Compliance, employment contracts, and representation in labour disputes.", "slug": "labour-law", "specialties": ["Industrial Disputes \u0026 Wrongful Terminations", "Service Writs in High Court (CAT cases)", "Gratuity, PF, and Wage claims", "Drafting Employment Contracts"], "statutes": ["Industrial Disputes Act, 1947", "Industrial Employment (Standing Orders) Act, 1946", "Central Administrative Tribunal (CAT) regulations"], "title": "Labour and Service Laws"})">Edit Details ✏️</button>
+
+                </div>
+
+              </div>
+
+              
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+    </main>
+
+
+
+    <!-- Chart.js and Dashboard Controller -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // 1. Navigation Tab Switching
+      function switchTab(evt, tabId) {
+        const tabContents = document.querySelectorAll(".tab-content");
+        tabContents.forEach(c => c.classList.remove("active"));
+        
+        const tabButtons = document.querySelectorAll(".tab-btn");
+        tabButtons.forEach(b => b.classList.remove("active"));
+        
+        document.getElementById(tabId).classList.add("active");
+        evt.currentTarget.classList.add("active");
+      }
+
+      // 2. Auto-populate PDF filename and Case Title when a file is selected
+      document.addEventListener("DOMContentLoaded", function () {
+        const fileInput = document.getElementById('case_pdf_file');
+        if (fileInput) {
+          fileInput.addEventListener('change', function() {
+            if (this.files && this.files.length > 0) {
+              const fileName = this.files[0].name;
+              const pdfInput = document.getElementById('case_pdf');
+              if (pdfInput) {
+                pdfInput.value = fileName;
+              }
+              const titleInput = document.getElementById('case_title');
+              if (titleInput && !titleInput.value) {
+                const cleanTitle = fileName.replace(/\.[^/.]+$/, "").replace(/[_-]/g, " ");
+                titleInput.value = cleanTitle;
+              }
+            }
+          });
+        }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="static/js/supabase-config.js"></script>
+    <script src="static/js/admin.js?v=3"></script>
+  </body>
+
+</html>

@@ -1,0 +1,256 @@
+[
+  {
+    "slug": "family-law",
+    "title": "Matrimonial & Family Law",
+    "icon": "👥",
+    "short_description": "Representation in divorce, custody, and family matters.",
+    "long_description": "Our matrimonial practice is dedicated to helping clients navigate sensitive family issues with dignity and legal precision. We cover all aspects of marriage dissolution, alimony, division of marital assets, and child custody disputes under Indian family laws.",
+    "specialties": [
+      "Mutual Consent Divorce (Section 13-B, HMA)",
+      "Contested Divorce Proceedings",
+      "Child Custody & Guardianship",
+      "Maintenance & Alimony Claims",
+      "Restitution of Conjugal Rights"
+    ],
+    "statutes": [
+      "Hindu Marriage Act, 1955",
+      "Special Marriage Act, 1954",
+      "Guardian and Wards Act, 1890"
+    ],
+    "faqs": [
+      {
+        "question": "What is the procedure for mutual consent divorce in India?",
+        "answer": "Mutual consent divorce is governed by Section 13-B of the Hindu Marriage Act. Both parties must jointly file a petition stating they have been living separately for at least one year and cannot live together. A six-month cooling-off period is usually mandated, after which the second motion is moved for the final decree."
+      },
+      {
+        "question": "How is maintenance (alimony) determined by the courts?",
+        "answer": "Under Section 125 CrPC and personal laws, courts determine maintenance based on the financial status, income, properties, and standard of living of both spouses. The court ensures that the dependent spouse is provided enough support to maintain a lifestyle similar to their matrimonial home."
+      }
+    ]
+  },
+  {
+    "slug": "commercial-disputes",
+    "title": "Commercial Matters & Commercial Courts",
+    "icon": "🏢",
+    "short_description": "Litigation and resolution of high-value commercial disputes under the Commercial Courts Act.",
+    "long_description": "Our firm specializes in handling high-stakes commercial disputes before the dedicated Commercial Courts. We provide comprehensive legal representation in commercial contracts, joint venture disputes, partnership claims, intellectual property matters, and real estate transactions. We navigate the specialized procedures under the Commercial Courts Act, 2015, including pre-institution mediation, summary trials, and strict case management timelines to secure swift and effective resolutions for our clients.",
+    "specialties": [
+      "Commercial Contract Enforcement & Disputes",
+      "Partnership & Joint Venture Claims",
+      "Summary Suits under Order XXXVII of CPC",
+      "Pre-Institution Mediation & Settlement",
+      "Arbitration & Execution of Commercial Decrees"
+    ],
+    "statutes": [
+      "Commercial Courts Act, 2015",
+      "Indian Contract Act, 1872",
+      "Specific Relief Act, 1963",
+      "Code of Civil Procedure, 1908 (Commercial Amendments)"
+    ],
+    "faqs": [
+      {
+        "question": "What is the pecuniary limit for a dispute to be tried by a Commercial Court?",
+        "answer": "Under the Commercial Courts Act, 2015 (as amended in 2018), the specified value of a commercial dispute must be at least ₹3 Lakhs to fall under the jurisdiction of the Commercial Courts."
+      },
+      {
+        "question": "Is mediation mandatory before filing a commercial suit?",
+        "answer": "Yes, under Section 12-A of the Commercial Courts Act, pre-institution mediation is mandatory unless the plaintiff seeks urgent interim relief from the court."
+      }
+    ]
+  },
+  {
+    "slug": "domestic-violence",
+    "title": "Domestic Violence Protection",
+    "icon": "📊",
+    "short_description": "Support and representation under the Domestic Violence Act, 2005.",
+    "long_description": "We provide robust legal advocacy for protection, residence orders, and compensation in domestic violence cases. We represent both survivors seeking urgent protection and individuals defending against false allegations.",
+    "specialties": [
+      "Filing Protection Orders & Residence Orders",
+      "Monetary Relief & Compensation Claims",
+      "Interim Relief Applications",
+      "Defense against false DV allegations"
+    ],
+    "statutes": [
+      "Protection of Women from Domestic Violence Act, 2005",
+      "Code of Criminal Procedure, 1973"
+    ],
+    "faqs": [
+      {
+        "question": "Who can file a case under the Domestic Violence Act, 2005?",
+        "answer": "Any woman who is, or has been, in a shared household with the respondent and alleges to have been subjected to any form of domestic violence (physical, emotional, sexual, or economic) by the respondent can file a complaint."
+      },
+      {
+        "question": "What immediate relief can a magistrate grant in a DV case?",
+        "answer": "The magistrate can pass interim protection orders, direct the respondent to pay monetary relief, secure alternative accommodation or pass residence orders, and grant temporary custody of children."
+      }
+    ]
+  },
+  {
+    "slug": "marriage-dowry",
+    "title": "Marriage and Dowry Offences",
+    "icon": "📖",
+    "short_description": "Legal assistance for dowry disputes and marriage-related cases.",
+    "long_description": "Handling delicate criminal matters related to marriage, including dowry harassment allegations (Section 498-A IPC) and Dowry Prohibition Act violations, with standard trials, anticipatory bail, and quashing proceedings.",
+    "specialties": [
+      "Anticipatory & Regular Bail in 498A IPC",
+      "Quashing of FIRs under Section 482 CrPC",
+      "Trial Defense & Cross-examination",
+      "Mediation & Settlement Assistance"
+    ],
+    "statutes": [
+      "Indian Penal Code, 1860 (Section 498-A)",
+      "Dowry Prohibition Act, 1961",
+      "Code of Criminal Procedure, 1973"
+    ],
+    "faqs": [
+      {
+        "question": "What options are available if a false Section 498-A case is filed?",
+        "answer": "If a false 498-A FIR is filed, the accused can apply for anticipatory bail to prevent arrest. They can also file a petition under Section 482 of the CrPC in the High Court for quashing the FIR if there is no prima facie case or if it is malicious."
+      }
+    ]
+  },
+  {
+    "slug": "cheque-dishonour",
+    "title": "Cheque Dishonour (Section 138)",
+    "icon": "💳",
+    "short_description": "Legal representation in dishonoured cheque and financial recovery cases.",
+    "long_description": "Comprehensive litigation services for cheque bounce cases. We handle the process from legal notice issuance to criminal complaints under the Negotiable Instruments Act for both complainants and defendants.",
+    "specialties": [
+      "Drafting & Issuing Statutory Demand Notices",
+      "Filing Complaints under Sec 138 NI Act",
+      "Corporate Financial Dispute Resolution",
+      "Defense Representation & Trials"
+    ],
+    "statutes": [
+      "Negotiable Instruments Act, 1881 (Section 138)",
+      "Code of Criminal Procedure, 1973"
+    ],
+    "faqs": [
+      {
+        "question": "What is the time limit to file a cheque bounce complaint?",
+        "answer": "A statutory demand notice must be sent within 30 days of receiving the cheque return memo. If the drawer fails to make the payment within 15 days of notice receipt, the complaint must be filed before the Magistrate court within 30 days thereafter."
+      },
+      {
+        "question": "Can cheque bounce lead to imprisonment?",
+        "answer": "Yes, Section 138 of the NI Act is a criminal offence. Upon conviction, the court can sentence the accused to imprisonment for a term up to two years, or a fine which may extend to twice the amount of the cheque, or both."
+      }
+    ]
+  },
+  {
+    "slug": "civil-litigation",
+    "title": "Civil Litigation",
+    "icon": "📈",
+    "short_description": "Support in civil disputes, property claims, contracts, and resolutions.",
+    "long_description": "Representation in property disputes, contract enforcement, injunctions, declarations, and succession matters in Jodhpur courts and Rajasthan High Court.",
+    "specialties": [
+      "Property & Partition Suits",
+      "Specific Performance of Contracts",
+      "Injunctions & Declaratory Suits",
+      "Succession, Wills, & Probate Matters"
+    ],
+    "statutes": [
+      "Code of Civil Procedure, 1908",
+      "Indian Contract Act, 1872",
+      "Specific Relief Act, 1963",
+      "Indian Succession Act, 1925"
+    ],
+    "faqs": [
+      {
+        "question": "What is a suit for partition?",
+        "answer": "A partition suit is filed when co-owners of a property cannot agree on their respective shares or partition. The court determines the shares of each co-owner and directs physical division or sale of the property to distribute proceeds."
+      }
+    ]
+  },
+  {
+    "slug": "criminal-litigation",
+    "title": "Criminal Litigation",
+    "icon": "⚖️",
+    "short_description": "Representation in criminal trials, appeals, revisions, and bail matters.",
+    "long_description": "Defense advocacy in criminal matters. We handle bail hearings, criminal trials, appeals, revisions, and writ petitions before trial courts, sessions courts, and the High Court.",
+    "specialties": [
+      "Regular & Anticipatory Bail Applications",
+      "Criminal Appeals & Revisions",
+      "Defense in IPC and Special Act trials",
+      "FIR Quashing & Suspension of Sentence"
+    ],
+    "statutes": [
+      "Indian Penal Code, 1860 (Bharatiya Nyaya Sanhita)",
+      "Code of Criminal Procedure, 1973 (Bharatiya Nagarik Suraksha Sanhita)",
+      "Indian Evidence Act, 1872"
+    ],
+    "faqs": [
+      {
+        "question": "What is the difference between active bail and anticipatory bail?",
+        "answer": "Anticipatory bail (Sec 438 CrPC) is applied for in anticipation of arrest for a non-bailable offence, directing that the person be released on bail immediately if arrested. Regular bail (Sec 437/439 CrPC) is applied for after a person has been arrested and is in custody."
+      }
+    ]
+  },
+  {
+    "slug": "arbitration",
+    "title": "Arbitration & ADR",
+    "icon": "📓",
+    "short_description": "Alternative dispute resolution through arbitration and conciliation.",
+    "long_description": "Helping commercial and private parties resolve disputes efficiently outside courtrooms. We advise on arbitration clauses, represent clients in domestic arbitrations, and handle court petitions for arbitrator appointments.",
+    "specialties": [
+      "Representing clients in Arbitration tribunals",
+      "Appointment of Arbitrators under Section 11",
+      "Challenging Arbitration Awards under Section 34",
+      "Enforcement of Arbitral Awards"
+    ],
+    "statutes": [
+      "Arbitration and Conciliation Act, 1996"
+    ],
+    "faqs": [
+      {
+        "question": "Can an arbitration award be challenged in court?",
+        "answer": "Yes, under Section 34 of the Arbitration and Conciliation Act, an award can be challenged on limited grounds such as lack of proper notice, incapacity of parties, dispute not falling within terms of arbitration, or conflict with public policy of India."
+      }
+    ]
+  },
+  {
+    "slug": "consumer-protection",
+    "title": "Consumer Protection",
+    "icon": "📋",
+    "short_description": "Advocacy in consumer rights, product liability, and protection cases.",
+    "long_description": "Advocating for consumers and defending businesses in product liability, service deficiency, and unfair trade practices before District, State, and National Consumer Forums.",
+    "specialties": [
+      "Filing Complaints for Deficiency in Service",
+      "Product Liability Claims",
+      "Insurance Claim Disputes",
+      "Appeals before State Commissions"
+    ],
+    "statutes": [
+      "Consumer Protection Act, 2019"
+    ],
+    "faqs": [
+      {
+        "question": "What is 'deficiency in service' under the Consumer Protection Act?",
+        "answer": "Deficiency means any fault, imperfection, shortcoming or inadequacy in the quality, nature, and manner of performance which is required to be maintained by or under any law or contract in relation to any service."
+      }
+    ]
+  },
+  {
+    "slug": "labour-law",
+    "title": "Labour and Service Laws",
+    "icon": "📍",
+    "short_description": "Compliance, employment contracts, and representation in labour disputes.",
+    "long_description": "Providing legal assistance in industrial disputes, service matters of government employees, domestic inquiries, suspension challenges, and compliance with labour codes.",
+    "specialties": [
+      "Industrial Disputes & Wrongful Terminations",
+      "Service Writs in High Court (CAT cases)",
+      "Gratuity, PF, and Wage claims",
+      "Drafting Employment Contracts"
+    ],
+    "statutes": [
+      "Industrial Disputes Act, 1947",
+      "Industrial Employment (Standing Orders) Act, 1946",
+      "Central Administrative Tribunal (CAT) regulations"
+    ],
+    "faqs": [
+      {
+        "question": "What is the role of the Central Administrative Tribunal (CAT)?",
+        "answer": "CAT was established to adjudicate disputes and complaints regarding recruitment and conditions of service of persons appointed to public services and posts in connection with the affairs of the Union or other local authorities."
+      }
+    ]
+  }
+]
