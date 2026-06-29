@@ -26,6 +26,16 @@ def copy_static_assets():
 
 copy_static_assets()
 
+# Automatically copy redirects configuration to dist root if it exists
+def copy_redirects_config():
+    src_redirects = os.path.join("static", "_redirects")
+    dest_redirects = os.path.join(output_dir, "_redirects")
+    if os.path.exists(src_redirects):
+        shutil.copy2(src_redirects, dest_redirects)
+        print(f"Copied redirects config from '{src_redirects}' to '{dest_redirects}'")
+
+copy_redirects_config()
+
 # Load practice areas and PDFs data
 with open(practice_json_path, 'r', encoding='utf-8') as f:
     practice_areas = json.load(f)
@@ -82,17 +92,12 @@ def compile_template(template_name, dest_path, root_path, context):
     if 'src="static/js/script.js"' in rendered:
         rendered = rendered.replace('src="static/js/script.js"', f'src="{root_path}static/js/script.js"')
         
-    # Inject before our script.js script
-    script_pattern = f'src="{root_path}static/js/script.js"'
-    if script_pattern in rendered:
+    # Inject before our script.js script (only once, avoid duplicates)
+    script_tag = f'<script src="{root_path}static/js/script.js">'
+    if script_tag in rendered and 'supabase-js@2' not in rendered:
         rendered = rendered.replace(
-            f'<script {script_pattern}',
-            f'{supabase_inject}    <script {script_pattern}'
-        )
-        # Also handle standard script tag format
-        rendered = rendered.replace(
-            f'<script src="{root_path}static/js/script.js"',
-            f'{supabase_inject}    <script src="{root_path}static/js/script.js"'
+            script_tag,
+            f'{supabase_inject}    {script_tag}'
         )
         
     # Write output file

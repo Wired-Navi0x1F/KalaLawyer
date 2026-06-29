@@ -448,26 +448,30 @@ document.addEventListener("DOMContentLoaded", function () {
         
       if (error) throw error;
       
-      if (cases && cases.length > 0) {
+      if (cases) {
         homeGrid.innerHTML = '';
-        cases.forEach(caseWin => {
-          const card = document.createElement('div');
-          card.className = 'case-home-card';
-          
-          let linkUrl = "case.html";
-          if (window.location.pathname.includes('/practice/')) {
-            linkUrl = "../case.html";
-          }
-          
-          card.innerHTML = `
-            <h3 class="case-home-title">${caseWin.title}</h3>
-            <p class="case-home-desc">${caseWin.description}</p>
-            <a href="${linkUrl}" class="case-home-link">
-              View Judgments List &rarr;
-            </a>
-          `;
-          homeGrid.appendChild(card);
-        });
+        if (cases.length === 0) {
+          homeGrid.innerHTML = '<p style="color: var(--secondary-color); font-style: italic; text-align: center; grid-column: 1 / -1;">No case victories recorded at this time.</p>';
+        } else {
+          cases.forEach(caseWin => {
+            const card = document.createElement('div');
+            card.className = 'case-home-card';
+            
+            let linkUrl = "case.html";
+            if (window.location.pathname.includes('/practice/')) {
+              linkUrl = "../case.html";
+            }
+            
+            card.innerHTML = `
+              <h3 class="case-home-title">${caseWin.title}</h3>
+              <p class="case-home-desc">${caseWin.description}</p>
+              <a href="${linkUrl}" class="case-home-link">
+                View Judgments List &rarr;
+              </a>
+            `;
+            homeGrid.appendChild(card);
+          });
+        }
       }
     } catch (err) {
       console.error("Error loading featured cases from Supabase:", err);
@@ -486,7 +490,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
       if (error) throw error;
       
-      if (cases && cases.length > 0) {
+      if (cases) {
         caseGrid.innerHTML = '';
         cases.forEach(pdf => {
           const card = document.createElement('div');
@@ -539,7 +543,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error loading case wins from Supabase:", err);
     }
   }
-});
+
 
 // Helper: Open custom PDF Modal
 function openPdfModal(pdfLink, title) {
@@ -702,3 +706,4 @@ function switchLocation(target) {
     gmapIframe.src = "https://maps.google.com/maps?q=GIRAH+SHOBHA,+Advocate+Anuj+Kala,+3-A,+Chopasani+Rd,+Near+Nasrani+Cinema,+Jodhpur,+Rajasthan+342003&t=&z=16&ie=UTF8&iwloc=&output=embed";
   }
 }
+});

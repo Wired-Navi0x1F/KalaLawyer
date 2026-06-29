@@ -4,8 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Login - The Kala Lawyers</title>
-    <link rel="icon" href="{{ url_for('static', filename='images/kala_lawyer_logo.png') }}" type="image/png" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='images/kala_lawyer_logo.png') }}"
+      type="image/png"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
     <style>
       .login-container {
         max-width: 400px;
@@ -18,7 +25,7 @@
         text-align: center;
       }
       .login-title {
-        font-family: 'Merriweather', serif;
+        font-family: "Merriweather", serif;
         font-size: 1.8rem;
         color: var(--primary-color);
         margin-top: 0;
@@ -64,6 +71,10 @@
       .login-btn:hover {
         background-color: var(--accent-hover);
       }
+      .login-btn:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
       .error-alert {
         background-color: #fde8e8;
         color: #9b1c1c;
@@ -74,14 +85,28 @@
         border: 1px solid #fbd5d5;
         text-align: left;
       }
+      .success-alert {
+        background-color: #e8f5e9;
+        color: #1b5e20;
+        padding: 0.8rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid #c8e6c9;
+        text-align: left;
+      }
     </style>
   </head>
   <body>
-    <!-- Header -->
     <header>
       <div class="header-main">
-        <a href="{{ url_for('home') }}" class="logo"><img src="{{ url_for('static', filename='images/kala_lawyer_logo.png') }}" alt="Kala Lawyer Logo" />KALA <span>LAWYER</span></a>
-        
+        <a href="{{ url_for('home') }}" class="logo"
+          ><img
+            src="{{ url_for('static', filename='images/kala_lawyer_logo.png') }}"
+            alt="Kala Lawyer Logo"
+          />KALA <span>LAWYER</span></a
+        >
+
         <nav class="nav-panel">
           <a href="{{ url_for('home') }}">Home</a>
           <a href="{{ url_for('about') }}">About Us</a>
@@ -104,11 +129,11 @@
               id="username"
               name="username"
               class="form-control"
-              required
               placeholder="Enter admin username or email"
+              required
             />
           </div>
-          
+
           <div class="form-group">
             <label for="password">Password</label>
             <input
@@ -116,19 +141,82 @@
               id="password"
               name="password"
               class="form-control"
-              required
               placeholder="Enter admin password"
+              required
             />
           </div>
 
-          <button type="submit" class="login-btn">LOG IN</button>
+          <button type="submit" id="loginBtn" class="login-btn">LOG IN</button>
         </form>
       </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="{{ url_for('static', filename='js/supabase-config.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          document
+            .querySelectorAll(".error-alert, .success-alert")
+            .forEach((el) => el.remove());
+
+          const usernameVal = document.getElementById("username").value.trim();
+          const passwordVal = document.getElementById("password").value;
+          const loginBtn = document.getElementById("loginBtn");
+
+          if (!usernameVal || !passwordVal) {
+            showAlert("error", "Please enter both username/email and password.");
+            return;
+          }
+
+          loginBtn.textContent = "LOGGING IN...";
+          loginBtn.disabled = true;
+
+          let email = usernameVal;
+          if (!usernameVal.includes("@")) {
+            email = `${usernameVal}@kalalawyers.com`;
+          }
+
+          try {
+            if (!supabaseClient) {
+              throw new Error("Supabase is not configured. Check supabase-config.js");
+            }
+
+            const { error } = await supabaseClient.auth.signInWithPassword({
+              email: email,
+              password: passwordVal,
+            });
+
+            if (error) throw error;
+
+            showAlert("success", "Login successful! Redirecting...");
+            setTimeout(() => {
+              window.location.href = "admin.html";
+            }, 500);
+          } catch (err) {
+            console.error("Login failed:", err);
+            showAlert(
+              "error",
+              err.message || "Invalid username or password. Please try again.",
+            );
+            loginBtn.textContent = "LOG IN";
+            loginBtn.disabled = false;
+          }
+        });
+
+      function showAlert(type, message) {
+        document
+          .querySelectorAll(".error-alert, .success-alert")
+          .forEach((el) => el.remove());
+        const alertDiv = document.createElement("div");
+        alertDiv.className = type === "error" ? "error-alert" : "success-alert";
+        alertDiv.textContent = message;
+        const form = document.getElementById("loginForm");
+        form.insertBefore(alertDiv, form.firstChild);
+      }
+    </script>
   </body>
 </html>
